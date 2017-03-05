@@ -63,7 +63,7 @@ WNDCLASSEX* Window::createclass(std::string const& wndClass) {
     wcx->lpfnWndProc = WindowProc;
     wcx->hInstance = hInstance;
     wcx->lpszClassName = regClass.c_str();
-    wcx->hCursor = LoadCursor(NULL, MAKEINTRESOURCE(IDC_ARROW));
+    wcx->hCursor = LoadCursor(NULL, IDC_ARROW);
     return wcx;
   }
   delete wcx;
@@ -79,7 +79,7 @@ void Window::create(int x, int y, int width, int height, std::string const& text
     wcex.lpfnWndProc = WindowProc;
     wcex.hInstance = GetModuleHandle(NULL);
     wcex.lpszClassName = "WUTILSWINDOW";
-    wcex.hCursor = LoadCursor(NULL, MAKEINTRESOURCE(IDC_ARROW));
+    wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
     windowClass = RegisterClassEx(&wcex);
   }
   hWnd = CreateWindowEx(exStyle, regClass.empty() ? "WUTILSWINDOW" : regClass.c_str(), text.c_str(), style,
