@@ -27,7 +27,17 @@ class FontSys {
     {
       fs.font = nullptr;
     }
-    FontStruct(FontStruct const& fs) = delete;
+	FontStruct &operator=(FontStruct &&fs) {
+		if (&fs != this) {
+			font = fs.font;
+			face = std::move(fs.face);
+			size = fs.size;
+			flags = fs.flags;
+			fs.font = nullptr;
+		}
+		return *this;
+	}
+	FontStruct(FontStruct const& fs) = delete;
     ~FontStruct() {
       if (font) DeleteObject(font);
     }
