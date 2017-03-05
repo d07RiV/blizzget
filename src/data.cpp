@@ -101,7 +101,7 @@ void ProgramData::loadBuilds() {
       File file = data_->ngdp_->load(cdn_hash);
       if (!file) return -1;
       data_->cdn_config = NGDP::ParseConfig(file);
-      data_->builds = split(data_->cdn_config["builds"]);
+	  data_->builds.push_back(data_->ngdp_->version()->build);
       notify(0);
       for (size_t i = 0; i < data_->builds.size() && !terminate_; ++i) {
         std::string build = data_->builds[i];
