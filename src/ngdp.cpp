@@ -58,8 +58,8 @@ namespace NGDP {
       auto& config = versions_[parts[0]];
       config.build = parts[1];
       config.cdn = parts[2];
-      config.id = std::stoi(parts[3]);
-      config.version = parts[4];
+      config.id = std::stoi(parts[4]);
+      config.version = parts[5];
       if (cdns_.count(parts[0])) {
         regions_.push_back(parts[0]);
       }
